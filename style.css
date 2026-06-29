@@ -1,0 +1,1097 @@
+/* Custom Design System & CSS Stylesheets - Marvelous Upgrade */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesque:wght@400;500;700&display=swap');
+
+:root {
+  --bg-primary: #08090d;
+  --bg-secondary: #0f111a;
+  --glass-bg: rgba(15, 17, 26, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --accent-pink: #ec4899;
+  
+  --accent-bjp: #ff9933; /* Saffron */
+  --accent-congress: #128807; /* Green */
+  
+  --text-main: #f3f4f6;
+  --text-muted: #8b95a5;
+  --text-glow: #ffffff;
+  
+  --font-display: 'Space Grotesque', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  
+  --shadow-neon: 0 8px 32px 0 rgba(139, 92, 246, 0.18);
+  --shadow-neon-cyan: 0 8px 32px 0 rgba(6, 182, 212, 0.18);
+  --shadow-neon-bjp: 0 8px 32px 0 rgba(255, 153, 51, 0.2);
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 5% 10%, rgba(255, 153, 51, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 95% 40%, rgba(18, 136, 7, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}
+
+/* App Header & Navbar */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-bjp) 20%, var(--accent-purple) 50%, var(--accent-congress) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.8px;
+}
+
+.logo-animation {
+  font-size: 1.9rem;
+  display: inline-block;
+  animation: logoWiggle 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoWiggle {
+  0% { transform: rotate(-5deg) scale(1); }
+  100% { transform: rotate(5deg) scale(1.1); }
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  transition: var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--glass-border);
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(6, 182, 212, 0.12));
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: var(--shadow-neon);
+}
+
+/* Live Activity Ticker styling */
+.ticker-wrapper {
+  background: rgba(10, 11, 16, 0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  overflow: hidden;
+  font-family: var(--font-display);
+}
+
+.ticker-header {
+  color: var(--accent-pink);
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  animation: pulseHeader 1.5s infinite alternate;
+}
+
+@keyframes pulseHeader {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; text-shadow: 0 0 10px var(--accent-pink); }
+}
+
+.ticker {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: scrollTicker 30s linear infinite;
+}
+
+.ticker-item {
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ticker-item::before {
+  content: '•';
+  color: var(--accent-cyan);
+}
+
+@keyframes scrollTicker {
+  0% { transform: translateX(10vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Main Content Wrappers */
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Section FadeIn Transition */
+.tab-content {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero - Meme of the Day styling */
+.motd-hero {
+  background: linear-gradient(135deg, rgba(15, 17, 26, 0.7), rgba(20, 22, 33, 0.85));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+.motd-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-bjp), var(--accent-pink));
+  color: #fff;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.motd-content {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .motd-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.motd-info h3 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.motd-info p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.motd-tags, .meme-card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  transition: var(--transition-smooth);
+}
+
+.tag:hover {
+  background: rgba(6, 182, 212, 0.1);
+  color: #fff;
+}
+
+.motd-image-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+  max-height: 280px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.motd-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motd-hero:hover .motd-image {
+  transform: scale(1.06);
+}
+
+/* Feed Controls / Category Filter Buttons */
+.feed-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 0.9rem 1.4rem;
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.search-input:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+}
+
+.categories-container {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.category-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.category-btn:hover, .category-btn.active {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.category-btn.active {
+  background: var(--accent-purple);
+  border-color: var(--accent-purple);
+  box-shadow: var(--shadow-neon);
+}
+
+/* Custom Highlight for political duel category button */
+.political-split-btn.active {
+  background: linear-gradient(135deg, var(--accent-bjp) 30%, var(--accent-congress) 70%);
+  border-color: #fff;
+  box-shadow: var(--shadow-neon-bjp);
+}
+
+/* Main Two-Column Layout */
+.feed-layout {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 950px) {
+  .feed-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.memes-column {
+  width: 100%;
+}
+
+.sidebar-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: sticky;
+  top: 90px; /* Adjust below sticky header */
+}
+
+/* Meme Cards Grid */
+.memes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+}
+
+.no-results-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.no-results h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.no-results p {
+  color: var(--text-muted);
+}
+
+/* Premium Meme Card Styling */
+.meme-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Dynamic Border highlights on political cards */
+.meme-card:has(.category-political) {
+  border-color: rgba(255, 153, 51, 0.15);
+}
+
+.meme-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-neon);
+}
+
+/* Double glowing effect on hover for political memes */
+.meme-card:has(.category-political):hover {
+  border-color: var(--accent-bjp);
+  box-shadow: 0 10px 30px rgba(255, 153, 51, 0.18), 0 0 20px rgba(18, 136, 7, 0.1);
+}
+
+.meme-card-header {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.category-tech { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+.category-desi { background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); border: 1px solid rgba(236, 72, 153, 0.3); }
+.category-dark { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); }
+.category-relatable { background: #f59e0b20; color: #f59e0b; border: 1px solid #f59e0b40; }
+.category-wholesome { background: #10b98120; color: #10b981; border: 1px solid #10b98140; }
+
+/* Political Accent badge */
+.category-political { 
+  background: linear-gradient(135deg, rgba(255, 153, 51, 0.15), rgba(18, 136, 7, 0.15)); 
+  color: var(--accent-bjp); 
+  border: 1px solid rgba(255, 153, 51, 0.3); 
+}
+
+.meme-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.35;
+  letter-spacing: -0.3px;
+}
+
+.meme-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/11;
+  overflow: hidden;
+  background: #000;
+}
+
+.meme-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meme-card:hover .meme-card-media img {
+  transform: scale(1.05);
+}
+
+.meme-card-body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.meme-card-caption {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.meme-card-footer {
+  padding: 1rem 1.2rem;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.reaction-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.reaction-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  border-color: var(--accent-purple);
+}
+
+.reaction-btn.reacted {
+  animation: popReaction 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(139, 92, 246, 0.1);
+  border-color: var(--accent-purple);
+  color: var(--text-main);
+}
+
+@keyframes popReaction {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.share-btn {
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+}
+
+.share-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.05);
+}
+
+/* Sidebar Widgets */
+.sidebar-widget {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.8rem;
+}
+
+.widget-header h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: -0.2px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-pink);
+  animation: pulseLive 1.2s infinite alternate;
+}
+
+@keyframes pulseLive {
+  0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); }
+  100% { transform: scale(1.2); box-shadow: 0 0 8px 4px rgba(236, 72, 153, 0); }
+}
+
+.widget-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Dynamic Live Queue List */
+.upload-queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.queue-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  padding: 0.8rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  animation: slideInQueue 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInQueue {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.queue-user {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.queue-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.queue-category {
+  font-size: 0.65rem;
+  align-self: flex-start;
+  background: rgba(255,255,255,0.03);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* Live Auto Upload Simulator Progress Bar */
+.progress-bar-container {
+  background: rgba(255,255,255,0.03);
+  height: 6px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.upload-status {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 0.3rem;
+}
+
+/* Political Score Board widget */
+.battle-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.battle-team {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.team-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.team-bar-bg {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--glass-border);
+  height: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-bar-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  transition: width 0.5s ease-out;
+}
+
+.orange-fill {
+  background: linear-gradient(90deg, #ffb84d, var(--accent-bjp));
+  box-shadow: 0 0 10px rgba(255, 153, 51, 0.4);
+}
+
+.green-fill {
+  background: linear-gradient(90deg, #62c358, var(--accent-congress));
+  box-shadow: 0 0 10px rgba(18, 136, 7, 0.4);
+}
+
+.battle-note {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Meme Creator styles */
+.generator-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .generator-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.controls-pane {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.controls-pane h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: -0.3px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.form-select, .form-input {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.form-select:focus, .form-input:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
+}
+
+.file-upload-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.file-upload-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px dashed var(--accent-cyan);
+  border-radius: 10px;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.03);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.file-upload-btn:hover {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: var(--text-main);
+}
+
+.file-upload-wrapper input[type="file"] {
+  display: none;
+}
+
+.slider-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.color-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.color-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.color-picker-wrapper input[type="color"] {
+  border: none;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.color-picker-wrapper span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  color: #fff;
+  border: none;
+  padding: 1.1rem;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-neon);
+  transition: var(--transition-smooth);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+.preview-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.canvas-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1rem;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+  max-width: 100%;
+}
+
+#meme-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Soundboard Styles */
+.soundboard-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.soundboard-header h3 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.soundboard-header p {
+  color: var(--text-muted);
+}
+
+.sound-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.sound-card {
+  --accent-color: var(--accent-purple);
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.sound-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.sound-card.playing {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px var(--accent-color);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sound-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sound-category {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.15rem 0.6rem;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.05);
+  letter-spacing: 0.5px;
+}
+
+.sound-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: -0.2px;
+}
+
+.sound-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.sound-play-btn {
+  align-self: flex-end;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.sound-card:hover .sound-play-btn {
+  transform: scale(1.12);
+}
+
+/* Sound Wave Animation */
+.sound-wave {
+  display: flex;
+  gap: 2.5px;
+  height: 16px;
+  align-items: flex-end;
+}
+
+.sound-wave span {
+  width: 2px;
+  height: 100%;
+  background-color: var(--accent-color);
+  animation: bounceWave 0.8s ease-in-out infinite alternate;
+}
+
+.sound-wave span:nth-child(2) { animation-delay: 0.15s; }
+.sound-wave span:nth-child(3) { animation-delay: 0.3s; }
+.sound-wave span:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes bounceWave {
+  0% { height: 2px; }
+  100% { height: 16px; }
+}
+
+/* Toast notifications styling */
+#toast {
+  visibility: hidden;
+  min-width: 300px;
+  background-color: rgba(15, 17, 26, 0.9);
+  border: 1px solid var(--accent-purple);
+  color: var(--text-main);
+  text-align: center;
+  border-radius: 14px;
+  padding: 1.1rem 1.6rem;
+  position: fixed;
+  z-index: 1000;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-neon);
+  backdrop-filter: blur(10px);
+}
+
+#toast.show {
+  visibility: visible;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1), fadeOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) 2.7s;
+}
+
+@keyframes slideUp {
+  from { bottom: 0; opacity: 0; }
+  to { bottom: 40px; opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

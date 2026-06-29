@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Comedy Memes Hub - BJP, Congress & Coding Memes</title>
+  <meta name="description" content="Ultimate Indian Politics (BJP vs Congress), Tech, and Desi Comedy Memes. Includes instant Meme Generator and interactive Soundboard.">
+  <meta name="keywords" content="politics memes, bjp memes, congress memes, election memes, meme creator, soundboard, fun sound effects">
+  
+  <!-- Style Links -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Marvelous Glowing Top Banner Header -->
+  <header class="app-header">
+    <nav class="nav-container">
+      <div class="logo" id="app-logo">
+        <span class="logo-animation">🎭</span> Political & Code Comedy Hub
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link active" data-tab="dashboard" id="nav-dashboard">Meme Feed</a></li>
+        <li><a href="#" class="nav-link" data-tab="generator" id="nav-generator">Meme Creator</a></li>
+        <li><a href="#" class="nav-link" data-tab="soundboard" id="nav-soundboard">Meme Sounds</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Live Activity Ticker Tapes -->
+  <div class="ticker-wrapper">
+    <div class="ticker-header">⚡ LIVE STREAM:</div>
+    <div class="ticker" id="live-activity-ticker">
+      <!-- Loaded dynamically via app.js -->
+      <span class="ticker-item">@ModiJiFan reacted 😂 on exit polls claim</span>
+      <span class="ticker-item">@RG_Supporter joined the chatroom</span>
+      <span class="ticker-item">New tech meme created by @CodingGuru</span>
+    </div>
+  </div>
+
+  <!-- App Hero & Main Container -->
+  <main>
+    
+    <!-- Hero / Meme of the Day Banner -->
+    <section class="motd-hero" id="motd-card">
+      <!-- Loaded dynamically via app.js -->
+    </section>
+
+    <!-- TAB 1: MEME DASHBOARD FEED -->
+    <section id="dashboard-section" class="tab-content">
+      <!-- Search & Filters -->
+      <div class="feed-controls">
+        <div class="search-wrapper">
+          <input type="text" id="search-memes" class="search-input" placeholder="Search memes (e.g. BJP, Congress, Code, WhatsApp)...">
+        </div>
+        <div class="categories-container">
+          <button class="category-btn active" data-category="all" id="btn-cat-all">All Memes</button>
+          <button class="category-btn political-split-btn" data-category="political" id="btn-cat-political">🗳️ Political Sarcasm</button>
+          <button class="category-btn" data-category="tech" id="btn-cat-tech">💻 Programming / Tech</button>
+          <button class="category-btn" data-category="desi" id="btn-cat-desi">🌶️ Indian Desi</button>
+          <button class="category-btn" data-category="relatable" id="btn-cat-relatable">🥱 Everyday Life</button>
+          <button class="category-btn" data-category="wholesome" id="btn-cat-wholesome">🌸 Wholesome</button>
+        </div>
+      </div>
+
+      <!-- Main Two-Column Layout for Marvelous Experience -->
+      <div class="feed-layout">
+        
+        <!-- Left Side: Meme Feed -->
+        <div class="memes-column">
+          <div class="memes-grid" id="memes-feed">
+            <!-- Loaded dynamically via app.js -->
+          </div>
+        </div>
+
+        <!-- Right Side: Live Community Activity / Auto Upload Queue -->
+        <div class="sidebar-column">
+          
+          <!-- Live Auto-Uploader Simulation Panel -->
+          <div class="sidebar-widget upload-widget">
+            <div class="widget-header">
+              <span class="pulse-dot"></span>
+              <h4>Live Community Stream</h4>
+            </div>
+            <div class="widget-body">
+              <p class="widget-desc">Real-time uploads from the meme community. Auto-fetching fresh political and tech content...</p>
+              
+              <!-- Loader simulator bar -->
+              <div class="progress-bar-container">
+                <div class="progress-bar" id="live-upload-progress"></div>
+              </div>
+              <div class="upload-status" id="upload-status-text">Ready to pull next meme...</div>
+              
+              <!-- Simulated Upload List -->
+              <div class="upload-queue-list" id="upload-queue-list">
+                <!-- Recent uploads will list here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Political War Arena Stats (Light Humor) -->
+          <div class="sidebar-widget battleground-widget">
+            <div class="widget-header">
+              <span>⚔️</span>
+              <h4>Meme Battleground Score</h4>
+            </div>
+            <div class="widget-body">
+              <div class="battle-bars">
+                <div class="battle-team orange-team">
+                  <div class="team-label">BJP Memes Laughs</div>
+                  <div class="team-bar-bg">
+                    <div class="team-bar-fill orange-fill" id="bjp-bar" style="width: 55%">55%</div>
+                  </div>
+                </div>
+                <div class="battle-team green-team">
+                  <div class="team-label">Congress Memes Laughs</div>
+                  <div class="team-bar-bg">
+                    <div class="team-bar-fill green-fill" id="congress-bar" style="width: 45%">45%</div>
+                  </div>
+                </div>
+              </div>
+              <p class="battle-note">*Updated in real-time based on laughs on BJP and Congress memes</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: CANVAS MEME GENERATOR -->
+    <section id="generator-section" class="tab-content hidden">
+      <div class="generator-container">
+        
+        <!-- Controls Side -->
+        <div class="controls-pane">
+          <h3>Create Custom Meme</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Choose a template or upload your own, then customize the text overlay.</p>
+          
+          <!-- Select Template -->
+          <div class="form-group">
+            <label for="template-select">Meme Template</label>
+            <select id="template-select" class="form-select">
+              <!-- Loaded dynamically via app.js -->
+            </select>
+          </div>
+
+          <!-- File Upload -->
+          <div class="form-group file-upload-wrapper">
+            <label for="meme-upload" class="file-upload-btn">📁 Upload Custom Image</label>
+            <input type="file" id="meme-upload" accept="image/*">
+          </div>
+
+          <!-- Top Text -->
+          <div class="form-group">
+            <label for="top-text">Top Text</label>
+            <input type="text" id="top-text" class="form-input" placeholder="Enter top text here..." value="">
+          </div>
+
+          <!-- Bottom Text -->
+          <div class="form-group">
+            <label for="bottom-text">Bottom Text</label>
+            <input type="text" id="bottom-text" class="form-input" placeholder="Enter bottom text here..." value="">
+          </div>
+
+          <!-- Font Customizations -->
+          <div class="form-group">
+            <div class="slider-group">
+              <label for="font-size">Font Size</label>
+              <span id="font-size-val" style="font-weight: 600; color: var(--accent-cyan);">32px</span>
+            </div>
+            <input type="range" id="font-size" min="16" max="64" value="32" class="form-range" style="width: 100%; accent-color: var(--accent-cyan);">
+          </div>
+
+          <div class="color-controls">
+            <div class="form-group">
+              <label>Text Color</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="text-color" value="#ffffff">
+                <span>Fill</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Outline Color</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="stroke-color" value="#000000">
+                <span>Stroke</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <button id="download-meme-btn" class="primary-btn">💾 Download Created Meme</button>
+        </div>
+
+        <!-- Canvas Preview Side -->
+        <div class="preview-pane">
+          <h3 style="font-family: var(--font-display);">Live Canvas Preview</h3>
+          <div class="canvas-wrapper">
+            <canvas id="meme-canvas"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: FUNNY MEME SOUNDBOARD -->
+    <section id="soundboard-section" class="tab-content hidden">
+      <div class="soundboard-header">
+        <h3>Comedy Sound Effects</h3>
+        <p>Interactive sounds of popular internet memes. Click to trigger audio & visual waves.</p>
+      </div>
+
+      <!-- Soundboard Buttons Grid -->
+      <div class="sound-grid" id="sound-grid">
+        <!-- Loaded dynamically via app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script Declarations -->
+  <script src="memes.js"></script>
+  <script src="soundboard.js"></script>
+  <script src="generator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
